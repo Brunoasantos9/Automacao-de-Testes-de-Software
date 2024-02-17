@@ -10,7 +10,7 @@ class TesteCalculaVolume(unittest.TestCase):
 
     def test_volume(self):
 
-	    self.assertEqual(calcula_volume(2, 4, 3), 24)
+	    self.assertEqual(calcula_volume(5, 5, 2), 50)
 
 
 if __name__ == '__main__':
