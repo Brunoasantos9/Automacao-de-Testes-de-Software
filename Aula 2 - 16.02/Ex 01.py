@@ -1,64 +1,39 @@
 import unittest
+from escolar import avaliar_notas
+
+class TestAvaliarNotas(unittest.TestCase):
+    
+    def test_valor_invalido_n1(self):
+        with self.assertRaises(ValueError):
+            avaliar_notas(-1, 0, 0, 0)
+
+    
+    def test_valor_invalido_n2(self):
+        with self.assertRaises(ValueError):
+            avaliar_notas(0, -1, 0, 0)
+
+    
+    def test_valor_invalido_n3(self):
+        with self.assertRaises(ValueError):
+            avaliar_notas(0, 0, -1, 0)
 
 
-def avaliar_notas(n1, n2, n3, media_exercicios):
+    def test_conceito_A(self):
+        self.assertEqual(avaliar_notas(10, 10, 10, 10), 'A')
 
+    
+    def test_conceito_B(self):
+        self.assertEqual(avaliar_notas(8.9, 8.9, 8.9, 8.9), 'B')
 
+    
+    def test_conceito_C(self):
+        self.assertEqual(avaliar_notas(7.4, 7.4, 7.4, 7.4), 'C')
 
-    if n1 < 0 or n1 > 10:
-
-        raise ValueError('Valor inválido para n1')
-
-
-
-    if n2 < 0 or n2 > 10:
-
-        raise ValueError('Valor inválido para n2')
-
-
-
-    if n3 < 0 or n3 > 10:
-
-        raise ValueError('Valor inválido para n3')
-
-
-
-    if media_exercicios < 0 or media_exercicios > 10:
-
-        raise ValueError('Valor inválido para media_exercicios')
-
-
-
-
-
-    media_aproveitamento = (n1 + 2*n2 + 3*n3 + media_exercicios)/7
-
-
-
-    if media_aproveitamento >= 9.0:
-
-        return 'A'
-
-    elif media_aproveitamento >= 7.5 and media_aproveitamento < 9:
-
-        return 'B'
-
-    elif media_aproveitamento >= 6.0 and media_aproveitamento < 7.5:
-
-        return 'C'
-
-    elif media_aproveitamento < 6.0:
-
-        return 'D' 
+    
+    def test_conceito_D(self):
+        self.assertEqual(avaliar_notas(5.9, 5.9, 5.9, 5.9), 'D')
+        
     
 
-class TesteAvaliarNotas(unittest.TestCase):
-
-    def avaliar_notas(self):
-
-	    self.assertEqual(avaliar_notas(10, 10, 10, 10)'A')
-
-
 if __name__ == '__main__':
-
-	unittest.main()
+    unittest.main()
